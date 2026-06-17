@@ -35,7 +35,6 @@
         .glassmorphism { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.2); }
         .dark .glassmorphism { background: rgba(15, 23, 42, 0.85); border-color: rgba(255, 255, 255, 0.1); }
         
-        /* Premium Skeleton Loading Animation */
         .skeleton { animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
         
@@ -45,6 +44,7 @@
 </head>
 <body class="bg-gradient-to-br from-slate-50 via-indigo-50 to-emerald-50 dark:from-slate-900 dark:via-slate-900 dark:to-indigo-950 min-h-screen flex flex-col text-slate-800 dark:text-slate-200 transition-colors duration-300">
 
+    <!-- Navbar -->
     <nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-50 border-b border-slate-100 dark:border-slate-800 px-4 py-3 shadow-sm transition-colors duration-300">
         <div class="max-w-[90rem] mx-auto flex flex-col lg:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-start">
@@ -86,7 +86,7 @@
 
                 <button onclick="document.getElementById('api-settings-modal').classList.remove('hidden')" class="flex w-full lg:w-auto items-center justify-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span id="nav-active-model">AI Engine Settings</span>
+                    <span id="nav-active-model">AI Engine</span>
                 </button>
 
                 <button onclick="toggleDarkMode()" class="hidden lg:block p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"><i class="fa-solid fa-moon dark:hidden"></i><i class="fa-solid fa-sun hidden dark:block text-amber-400"></i></button>
@@ -96,28 +96,23 @@
 
     <main class="flex-grow max-w-[90rem] w-full mx-auto p-2 sm:p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- Left Dashboard Sidebar -->
+        <!-- Left Sidebar -->
         <aside id="main-sidebar" class="lg:col-span-3 flex flex-col gap-4 transition-all duration-300">
-            
-            <!-- Personalization & Gamification Profile -->
+            <!-- Profile -->
             <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm flex flex-col gap-3">
                 <div class="flex justify-between items-start">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-indigo-500 to-emerald-500 flex items-center justify-center text-white font-bold text-lg"><i class="fa-solid fa-user-ninja"></i></div>
                         <div>
                             <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">প্রোফাইল</h3>
-                            <div class="flex gap-1 mt-0.5" id="badge-container">
-                                <span class="bg-amber-100 text-amber-700 text-[8px] px-1.5 rounded-sm font-bold" title="Novice">Novice</span>
-                            </div>
+                            <div class="flex gap-1 mt-0.5" id="badge-container"><span class="bg-slate-100 text-slate-500 text-[8px] px-1.5 rounded-sm font-bold">Beginner</span></div>
                         </div>
                     </div>
-                    <!-- Fire Streak -->
                     <div class="flex flex-col items-center justify-center bg-orange-50 dark:bg-orange-900/20 px-2 py-1 rounded-lg border border-orange-100 dark:border-orange-800" title="Daily Streak">
                         <i class="fa-solid fa-fire text-orange-500 text-lg animate-pulse"></i>
                         <span class="text-[10px] font-bold text-orange-700 dark:text-orange-400"><span id="streak-counter">1</span> Day</span>
                     </div>
                 </div>
-                
                 <div class="flex justify-between items-center bg-indigo-50 dark:bg-indigo-900/20 p-2 rounded-xl border border-indigo-100 dark:border-indigo-800/50 mt-1">
                     <span class="text-xs font-bold text-indigo-700 dark:text-indigo-400"><i class="fa-solid fa-star text-amber-500"></i> XP: <span id="sidebar-xp">0</span></span>
                     <select id="user-proficiency-level" onchange="updateProficiency()" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[10px] font-semibold px-2 py-1 rounded-lg outline-none text-slate-700 dark:text-slate-300">
@@ -140,7 +135,6 @@
 
                 <div class="text-[10px] font-bold text-slate-400 uppercase px-3 py-1 mt-2 hidden lg:block">Learning Module</div>
                 
-                <!-- Daily Learning Tab Button -->
                 <button onclick="switchTab('daily')" id="tab-btn-daily" class="flex-none lg:flex-none flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-rose-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <i class="fa-solid fa-graduation-cap w-5 text-center text-rose-500 animate-pulse"></i> <span class="whitespace-nowrap relative z-10 font-bold">Daily Learning <span class="bg-rose-500 text-white text-[8px] px-1.5 py-0.5 rounded-full ml-1">NEW</span></span>
@@ -182,7 +176,6 @@
                         <button onclick="startAutoQuiz('vocab')" class="flex-1 py-1.5 bg-indigo-500 hover:bg-indigo-600 active:scale-[0.98] transition-all duration-200 rounded-lg text-[10px] font-semibold text-center shadow-sm">AI Quiz</button>
                     </div>
                 </div>
-                
                 <div class="bg-gradient-to-br from-rose-900 to-slate-900 dark:from-slate-800 dark:to-slate-950 p-4 rounded-2xl text-white shadow-lg flex flex-col gap-2 relative overflow-hidden">
                     <div class="absolute -right-4 -bottom-4 text-6xl opacity-10"><i class="fa-solid fa-book-skull"></i></div>
                     <div class="flex justify-between items-center z-10">
@@ -198,9 +191,10 @@
             </div>
         </aside>
 
+        <!-- Main Content Area -->
         <section id="main-content-area" class="lg:col-span-9 flex flex-col gap-6 transition-all duration-300">
 
-            <!-- TAB 1: CORE TRANSLATOR -->
+            <!-- TAB: TRANSLATOR -->
             <div id="tab-content-translator" class="tab-panel flex flex-col gap-6">
                 <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden flex flex-col">
                     <div class="flex flex-wrap items-center justify-between border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 px-4 sm:px-6 py-3 gap-3">
@@ -235,7 +229,7 @@
                                 <span class="text-xs font-bold text-slate-500 dark:text-slate-400" id="source-lang-indicator">বাংলায় লিখুন, বলুন বা ছবি দিন:</span>
                                 <button onclick="clearSourceInput()" class="text-xs font-semibold text-rose-500 hover:underline">Clear</button>
                             </div>
-                            <textarea id="source-text" placeholder="এখানে লিখুন... (যেমন: 'ব্রো, প্যারা নাই চিল' বা 'bhai ektu help lagbe')" class="w-full flex-grow resize-none border-0 focus:ring-0 p-0 text-slate-800 dark:text-slate-200 text-base md:text-lg outline-none bg-transparent placeholder-slate-300 dark:placeholder-slate-600" rows="5"></textarea>
+                            <textarea id="source-text" placeholder="এখানে লিখুন... (যেমন: 'ব্রো, প্যারা নাই চিল' বা 'tui valo hoye ja')" class="w-full flex-grow resize-none border-0 focus:ring-0 p-0 text-slate-800 dark:text-slate-200 text-base md:text-lg outline-none bg-transparent placeholder-slate-300 dark:placeholder-slate-600" rows="5"></textarea>
                             <div id="image-preview-container" class="hidden flex-wrap gap-3 pb-2"></div>
 
                             <div class="flex justify-between items-center pt-2 border-t border-slate-100 dark:border-slate-700 mt-2">
@@ -260,7 +254,7 @@
                                 </div>
                             </div>
                             <div id="target-text-container" class="flex-grow relative">
-                                <p id="target-text" class="text-slate-400 dark:text-slate-500 italic text-base md:text-lg">অনুবাদ এখানে প্রদর্শিত হবে...</p>
+                                <div id="target-text" class="text-slate-400 dark:text-slate-500 italic text-base md:text-lg">অনুবাদ এখানে প্রদর্শিত হবে...</div>
                                 <div id="skeleton-box" class="hidden absolute top-0 left-0 w-full h-full space-y-3">
                                     <div class="skeleton h-5 bg-slate-200 dark:bg-slate-700 rounded w-full"></div>
                                     <div class="skeleton h-5 bg-slate-200 dark:bg-slate-700 rounded w-5/6"></div>
@@ -326,150 +320,6 @@
                     <div class="bg-indigo-50/50 dark:bg-indigo-900/20 p-4 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
                         <h4 class="text-[10px] font-bold uppercase text-indigo-700 dark:text-indigo-400 mb-2"><i class="fa-solid fa-book-open"></i> Extracted Vocabulary</h4>
                         <div id="extracted-vocabulary-content" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NEW TAB: DAILY LEARNING -->
-            <div id="tab-content-daily" class="tab-panel hidden flex flex-col gap-6">
-                
-                <!-- Initial Loader Button -->
-                <div id="daily-init-box" class="bg-white dark:bg-slate-800 rounded-3xl border border-rose-100 dark:border-rose-900/30 shadow-md p-10 flex flex-col items-center justify-center text-center gap-4">
-                    <div class="w-20 h-20 bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 rounded-full flex items-center justify-center text-4xl mb-2 shadow-inner"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Welcome to Daily Learning</h2>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-lg mb-4">Complete 5 daily sections to earn XP, maintain your streak, and unlock new badges. Customized for your level: <span class="font-bold text-rose-500 capitalize" id="daily-level-display">Intermediate</span>.</p>
-                    <button onclick="generateDailyLesson()" id="btn-gen-daily" class="px-8 py-3.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-lg rounded-2xl shadow-lg transition-all flex items-center gap-3">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Today's Lesson
-                    </button>
-                </div>
-
-                <!-- Daily Content Dashboard (Hidden until generated) -->
-                <div id="daily-content-box" class="hidden flex flex-col gap-6">
-                    
-                    <!-- Top Dashboard Stats -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-3">
-                            <div class="bg-orange-100 text-orange-600 w-10 h-10 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-fire"></i></div>
-                            <div><p class="text-[10px] font-bold text-slate-400 uppercase">Streak</p><h4 class="text-xl font-black text-slate-800 dark:text-slate-100" id="dash-streak">0</h4></div>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-3">
-                            <div class="bg-amber-100 text-amber-600 w-10 h-10 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-star"></i></div>
-                            <div><p class="text-[10px] font-bold text-slate-400 uppercase">Total XP</p><h4 class="text-xl font-black text-slate-800 dark:text-slate-100" id="dash-xp">0</h4></div>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-3">
-                            <div class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-book-open"></i></div>
-                            <div><p class="text-[10px] font-bold text-slate-400 uppercase">Words Learned</p><h4 class="text-xl font-black text-slate-800 dark:text-slate-100" id="dash-words">0</h4></div>
-                        </div>
-                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col justify-center">
-                            <p class="text-[10px] font-bold text-slate-400 uppercase mb-1">Badges Unlocked</p>
-                            <div class="flex gap-1 flex-wrap" id="dash-badges"><span class="text-xs text-slate-500">None yet</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Progress Chart -->
-                    <div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700">
-                        <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-4"><i class="fa-solid fa-chart-line text-emerald-500 mr-2"></i> Weekly XP Progress</h3>
-                        <div class="h-48 w-full"><canvas id="progressChart"></canvas></div>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <!-- SECTION 1: Daily Challenge -->
-                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-rose-100 dark:border-rose-900/30 flex flex-col relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-rose-50 dark:bg-rose-900/20 rounded-bl-full -z-10"></div>
-                            <span class="text-[10px] font-bold text-rose-500 uppercase tracking-widest mb-1">Section 1</span>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-4">আজকের চ্যালেঞ্জ</h3>
-                            
-                            <div class="bg-slate-50 dark:bg-slate-900 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 flex-grow flex flex-col justify-center">
-                                <h2 class="text-3xl font-black text-rose-600 dark:text-rose-400 mb-1 text-center" id="dl-word-en">Word</h2>
-                                <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 text-center mb-4" id="dl-word-bn">Meaning</p>
-                                
-                                <div class="space-y-3 mb-4 text-sm text-slate-700 dark:text-slate-300">
-                                    <p><i class="fa-solid fa-quote-left text-slate-300 mr-1"></i> <span id="dl-ex-en" class="font-medium">...</span></p>
-                                    <p class="text-xs text-slate-500" id="dl-ex-bn">...</p>
-                                    <div class="bg-rose-50 dark:bg-rose-900/20 p-3 rounded-xl border border-rose-100/50 mt-2">
-                                        <p class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-1"><i class="fa-regular fa-lightbulb"></i> Usage Tip</p>
-                                        <p class="text-xs" id="dl-tip">...</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="grid grid-cols-2 gap-3 mt-4">
-                                <button onclick="markDailyWord('known')" id="btn-dl-known" class="py-2.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-xl transition-all">আমি জানি ✓</button>
-                                <button onclick="markDailyWord('learned')" id="btn-dl-learned" class="py-2.5 bg-rose-500 hover:bg-rose-600 text-white text-sm font-bold rounded-xl shadow-md transition-all">শিখলাম 🔖 (+5 XP)</button>
-                            </div>
-                        </div>
-
-                        <!-- SECTION 2: Quick Quiz -->
-                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-indigo-100 dark:border-indigo-900/30 flex flex-col">
-                            <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-widest mb-1">Section 2</span>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-4">Quick Quiz</h3>
-                            
-                            <div id="dl-quiz-start" class="flex-grow flex flex-col items-center justify-center text-center p-6 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
-                                <i class="fa-solid fa-stopwatch text-4xl text-indigo-400 mb-3"></i>
-                                <p class="text-sm font-semibold mb-4 text-slate-700 dark:text-slate-300">Test today's learning and previous mistakes. Get 10 XP for each correct answer!</p>
-                                <button onclick="startDailyQuiz()" class="px-6 py-2.5 bg-indigo-600 text-white font-bold rounded-xl shadow-md hover:bg-indigo-700 transition-all">Start Quiz</button>
-                            </div>
-
-                            <div id="dl-quiz-active" class="hidden flex-grow flex flex-col">
-                                <div class="flex justify-between items-center mb-3">
-                                    <span class="text-xs font-bold text-slate-500">Question <span id="dl-quiz-num">1</span>/5</span>
-                                    <span class="text-xs font-bold text-emerald-500" id="dl-quiz-score">Score: 0</span>
-                                </div>
-                                <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-4 text-sm" id="dl-quiz-q">Question text?</h4>
-                                <div class="space-y-2 flex-grow" id="dl-quiz-options"></div>
-                                <div id="dl-quiz-feedback" class="hidden mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-xl text-xs text-slate-700 dark:text-slate-300"></div>
-                                <button onclick="nextDailyQuiz()" id="btn-dl-quiz-next" class="hidden mt-4 py-2.5 bg-slate-800 dark:bg-slate-700 text-white font-bold rounded-xl w-full">Next Question</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- SECTION 3: Listening Practice -->
-                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-purple-100 dark:border-purple-900/30 flex flex-col">
-                            <div class="flex justify-between items-start mb-4">
-                                <div>
-                                    <span class="text-[10px] font-bold text-purple-500 uppercase tracking-widest mb-1 block">Section 3</span>
-                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg">Listening Practice</h3>
-                                </div>
-                                <select id="dl-listen-diff" onchange="loadDailyListening()" class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[10px] font-semibold px-2 py-1 rounded-lg outline-none">
-                                    <option value="easy">Easy</option>
-                                    <option value="medium" selected>Medium</option>
-                                    <option value="hard">Hard</option>
-                                </select>
-                            </div>
-                            
-                            <div class="bg-purple-50 dark:bg-purple-900/20 p-5 rounded-2xl flex-grow flex flex-col items-center justify-center border border-purple-100 dark:border-purple-800/50 text-center gap-4">
-                                <button onclick="playDailyListening()" class="w-16 h-16 bg-purple-500 hover:bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl shadow-lg transition-all"><i class="fa-solid fa-volume-high"></i></button>
-                                <input type="text" id="dl-listen-input" placeholder="Type what you hear..." class="w-full text-center px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 outline-none text-sm bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 shadow-inner">
-                                <button onclick="checkDailyListening()" class="px-6 py-2 bg-slate-800 dark:bg-slate-700 text-white text-xs font-bold rounded-xl w-full">Submit Answer</button>
-                                <div id="dl-listen-feedback" class="w-full text-xs text-left p-3 rounded-xl hidden"></div>
-                            </div>
-                        </div>
-
-                        <!-- SECTION 4: Speak & Score -->
-                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-emerald-100 dark:border-emerald-900/30 flex flex-col">
-                            <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1">Section 4</span>
-                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-4">Speak & Score</h3>
-                            
-                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-5 rounded-2xl flex-grow flex flex-col items-center justify-center border border-emerald-100 dark:border-emerald-800/50 text-center gap-4">
-                                <p class="text-lg font-bold text-slate-800 dark:text-slate-200" id="dl-speak-target">"I would like to schedule a meeting."</p>
-                                <div class="flex flex-col items-center gap-2">
-                                    <button onclick="toggleDailySpeakMic()" id="btn-dl-speak" class="w-16 h-16 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl shadow-lg transition-all relative">
-                                        <i class="fa-solid fa-microphone" id="icon-dl-speak"></i>
-                                    </button>
-                                    <span class="text-[10px] text-slate-500 font-semibold uppercase" id="dl-speak-status">Tap to Speak</span>
-                                </div>
-                                
-                                <div id="dl-speak-result" class="w-full hidden">
-                                    <div class="flex justify-between items-center mb-2">
-                                        <span class="text-xs font-bold text-slate-600">Pronunciation Score:</span>
-                                        <span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs font-black rounded-full" id="dl-speak-score">0/100</span>
-                                    </div>
-                                    <p class="text-xs text-slate-600 dark:text-slate-400 text-left bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700" id="dl-speak-feedback">Feedback...</p>
-                                    <button onclick="document.getElementById('dl-speak-result').classList.add('hidden')" class="mt-2 text-[10px] font-bold text-emerald-600 hover:underline">Try Again</button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -637,6 +487,7 @@
                             </div>
                         </div>
 
+                        <!-- Professional Writer Output Section -->
                         <div class="flex flex-col">
                             <div class="flex justify-between items-center mb-3">
                                 <h4 class="font-bold text-slate-800 dark:text-slate-200 text-sm">AI Output <span id="prowriter-loader" class="hidden text-[10px] ml-2 text-indigo-500 animate-pulse">Processing...</span></h4>
@@ -677,9 +528,150 @@
                 </div>
             </div>
 
-            <!-- OTHER TABS... -->
+            <!-- TAB: DAILY LEARNING -->
+            <div id="tab-content-daily" class="tab-panel hidden flex flex-col gap-6">
+                <!-- Initial Loader Button -->
+                <div id="daily-init-box" class="bg-white dark:bg-slate-800 rounded-3xl border border-rose-100 dark:border-rose-900/30 shadow-md p-10 flex flex-col items-center justify-center text-center gap-4">
+                    <div class="w-20 h-20 bg-rose-100 dark:bg-rose-900/50 text-rose-600 dark:text-rose-400 rounded-full flex items-center justify-center text-4xl mb-2 shadow-inner"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h2 class="text-2xl font-bold text-slate-800 dark:text-slate-200">Welcome to Daily Learning</h2>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 max-w-lg mb-4">Complete 5 daily sections to earn XP, maintain your streak, and unlock new badges. Customized for your level: <span class="font-bold text-rose-500 capitalize" id="daily-level-display">Intermediate</span>.</p>
+                    <button onclick="generateDailyLesson()" id="btn-gen-daily" class="px-8 py-3.5 bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white font-bold text-lg rounded-2xl shadow-lg transition-all flex items-center gap-3">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Today's Lesson
+                    </button>
+                </div>
+
+                <!-- Daily Content Dashboard (Hidden until generated) -->
+                <div id="daily-content-box" class="hidden flex flex-col gap-6">
+                    <!-- Top Dashboard Stats -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-3">
+                            <div class="bg-orange-100 text-orange-600 w-10 h-10 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-fire"></i></div>
+                            <div><p class="text-[10px] font-bold text-slate-400 uppercase">Streak</p><h4 class="text-xl font-black text-slate-800 dark:text-slate-100" id="dash-streak">0</h4></div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-3">
+                            <div class="bg-amber-100 text-amber-600 w-10 h-10 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-star"></i></div>
+                            <div><p class="text-[10px] font-bold text-slate-400 uppercase">Total XP</p><h4 class="text-xl font-black text-slate-800 dark:text-slate-100" id="dash-xp">0</h4></div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-3">
+                            <div class="bg-indigo-100 text-indigo-600 w-10 h-10 rounded-xl flex items-center justify-center text-xl"><i class="fa-solid fa-book-open"></i></div>
+                            <div><p class="text-[10px] font-bold text-slate-400 uppercase">Words Learned</p><h4 class="text-xl font-black text-slate-800 dark:text-slate-100" id="dash-words">0</h4></div>
+                        </div>
+                        <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col justify-center">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase mb-1">Badges Unlocked</p>
+                            <div class="flex gap-1 flex-wrap" id="dash-badges"><span class="text-xs text-slate-500">None yet</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Chart -->
+                    <div class="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm mb-4"><i class="fa-solid fa-chart-line text-emerald-500 mr-2"></i> Weekly XP Progress</h3>
+                        <div class="h-48 w-full"><canvas id="progressChart"></canvas></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- SECTION 1: Daily Challenge -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-rose-100 dark:border-rose-900/30 flex flex-col relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-rose-50 dark:bg-rose-900/20 rounded-bl-full -z-10"></div>
+                            <span class="text-[10px] font-bold text-rose-500 uppercase tracking-widest mb-1">Section 1</span>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-4">আজকের চ্যালেঞ্জ</h3>
+                            
+                            <div class="bg-slate-50 dark:bg-slate-900 p-5 rounded-2xl border border-slate-100 dark:border-slate-700 flex-grow flex flex-col justify-center">
+                                <h2 class="text-3xl font-black text-rose-600 dark:text-rose-400 mb-1 text-center" id="dl-word-en">Word</h2>
+                                <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 text-center mb-4" id="dl-word-bn">Meaning</p>
+                                
+                                <div class="space-y-3 mb-4 text-sm text-slate-700 dark:text-slate-300">
+                                    <p><i class="fa-solid fa-quote-left text-slate-300 mr-1"></i> <span id="dl-ex-en" class="font-medium">...</span></p>
+                                    <p class="text-xs text-slate-500" id="dl-ex-bn">...</p>
+                                    <div class="bg-rose-50 dark:bg-rose-900/20 p-3 rounded-xl border border-rose-100/50 mt-2">
+                                        <p class="text-xs font-bold text-rose-700 dark:text-rose-300 mb-1"><i class="fa-regular fa-lightbulb"></i> Usage Tip</p>
+                                        <p class="text-xs" id="dl-tip">...</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-3 mt-4">
+                                <button onclick="markDailyWord('known')" id="btn-dl-known" class="py-2.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 text-sm font-bold rounded-xl transition-all">আমি জানি ✓</button>
+                                <button onclick="markDailyWord('learned')" id="btn-dl-learned" class="py-2.5 bg-rose-500 hover:bg-rose-600 text-white text-sm font-bold rounded-xl shadow-md transition-all">শিখলাম 🔖 (+5 XP)</button>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 2: Quick Quiz -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-indigo-100 dark:border-indigo-900/30 flex flex-col">
+                            <span class="text-[10px] font-bold text-indigo-500 uppercase tracking-widest mb-1">Section 2</span>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-4">Quick Quiz</h3>
+                            
+                            <div id="dl-quiz-start" class="flex-grow flex flex-col items-center justify-center text-center p-6 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50">
+                                <i class="fa-solid fa-stopwatch text-4xl text-indigo-400 mb-3"></i>
+                                <p class="text-sm font-semibold mb-4 text-slate-700 dark:text-slate-300">Test today's learning and previous mistakes. Get 10 XP for each correct answer!</p>
+                                <button onclick="startDailyQuiz()" class="px-6 py-2.5 bg-indigo-600 text-white font-bold rounded-xl shadow-md hover:bg-indigo-700 transition-all">Start Quiz</button>
+                            </div>
+
+                            <div id="dl-quiz-active" class="hidden flex-grow flex flex-col">
+                                <div class="flex justify-between items-center mb-3">
+                                    <span class="text-xs font-bold text-slate-500">Question <span id="dl-quiz-num">1</span>/5</span>
+                                    <span class="text-xs font-bold text-emerald-500" id="dl-quiz-score">Score: 0</span>
+                                </div>
+                                <h4 class="font-bold text-slate-800 dark:text-slate-200 mb-4 text-sm" id="dl-quiz-q">Question text?</h4>
+                                <div class="space-y-2 flex-grow" id="dl-quiz-options"></div>
+                                <div id="dl-quiz-feedback" class="hidden mt-4 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50 rounded-xl text-xs text-slate-700 dark:text-slate-300"></div>
+                                <button onclick="nextDailyQuiz()" id="btn-dl-quiz-next" class="hidden mt-4 py-2.5 bg-slate-800 dark:bg-slate-700 text-white font-bold rounded-xl w-full">Next Question</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- SECTION 3: Listening Practice -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-purple-100 dark:border-purple-900/30 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <span class="text-[10px] font-bold text-purple-500 uppercase tracking-widest mb-1 block">Section 3</span>
+                                    <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg">Listening Practice</h3>
+                                </div>
+                                <select id="dl-listen-diff" onchange="loadDailyListening()" class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[10px] font-semibold px-2 py-1 rounded-lg outline-none">
+                                    <option value="easy">Easy</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="hard">Hard</option>
+                                </select>
+                            </div>
+                            
+                            <div class="bg-purple-50 dark:bg-purple-900/20 p-5 rounded-2xl flex-grow flex flex-col items-center justify-center border border-purple-100 dark:border-purple-800/50 text-center gap-4">
+                                <button onclick="playDailyListening()" class="w-16 h-16 bg-purple-500 hover:bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl shadow-lg transition-all"><i class="fa-solid fa-volume-high"></i></button>
+                                <input type="text" id="dl-listen-input" placeholder="Type what you hear..." class="w-full text-center px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 outline-none text-sm bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 shadow-inner">
+                                <button onclick="checkDailyListening()" class="px-6 py-2 bg-slate-800 dark:bg-slate-700 text-white text-xs font-bold rounded-xl w-full">Submit Answer</button>
+                                <div id="dl-listen-feedback" class="w-full text-xs text-left p-3 rounded-xl hidden"></div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 4: Speak & Score -->
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm border border-emerald-100 dark:border-emerald-900/30 flex flex-col">
+                            <span class="text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1">Section 4</span>
+                            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg mb-4">Speak & Score</h3>
+                            
+                            <div class="bg-emerald-50 dark:bg-emerald-900/20 p-5 rounded-2xl flex-grow flex flex-col items-center justify-center border border-emerald-100 dark:border-emerald-800/50 text-center gap-4">
+                                <p class="text-lg font-bold text-slate-800 dark:text-slate-200" id="dl-speak-target">"I would like to schedule a meeting."</p>
+                                <div class="flex flex-col items-center gap-2">
+                                    <button onclick="toggleDailySpeakMic()" id="btn-dl-speak" class="w-16 h-16 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl shadow-lg transition-all relative">
+                                        <i class="fa-solid fa-microphone" id="icon-dl-speak"></i>
+                                    </button>
+                                    <span class="text-[10px] text-slate-500 font-semibold uppercase" id="dl-speak-status">Tap to Speak</span>
+                                </div>
+                                
+                                <div id="dl-speak-result" class="w-full hidden">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-xs font-bold text-slate-600">Pronunciation Score:</span>
+                                        <span class="px-2 py-1 bg-emerald-100 text-emerald-800 text-xs font-black rounded-full" id="dl-speak-score">0/100</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 dark:text-slate-400 text-left bg-white dark:bg-slate-800 p-3 rounded-xl border border-slate-200 dark:border-slate-700" id="dl-speak-feedback">Feedback...</p>
+                                    <button onclick="document.getElementById('dl-speak-result').classList.add('hidden')" class="mt-2 text-[10px] font-bold text-emerald-600 hover:underline">Try Again</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: DICTATION PRACTICE -->
             <div id="tab-content-dictation" class="tab-panel hidden flex flex-col gap-6">
-                <!-- Old Dictation (Intact per instruction) -->
                 <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col gap-6 items-center text-center">
                     <div>
                         <div class="w-16 h-16 mx-auto bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 rounded-full flex items-center justify-center text-2xl mb-3"><i class="fa-solid fa-headphones-simple"></i></div>
@@ -695,8 +687,8 @@
                 </div>
             </div>
 
+            <!-- TAB: PATTERN MASTER -->
             <div id="tab-content-pattern" class="tab-panel hidden flex flex-col gap-6">
-                <!-- Old Pattern Master (Intact) -->
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm flex flex-col gap-4">
                     <h3 class="font-bold text-slate-800 dark:text-slate-200 text-lg">Sentence Pattern Master</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
@@ -721,8 +713,8 @@
                 </div>
             </div>
 
+            <!-- TAB: AI SPEAKING PARTNER -->
             <div id="tab-content-tutor" class="tab-panel hidden flex flex-col gap-4 h-[600px]">
-                <!-- Old AI Speaking Partner (Intact) -->
                 <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm flex flex-col h-full overflow-hidden">
                     <div class="flex flex-wrap items-center justify-between px-4 sm:px-6 py-4 border-b border-slate-100 dark:border-slate-700 bg-blue-50/50 dark:bg-blue-900/20 gap-3">
                         <div class="flex items-center gap-3">
@@ -746,8 +738,8 @@
                 </div>
             </div>
 
+            <!-- TAB: PRONUNCIATION COACH -->
             <div id="tab-content-coach" class="tab-panel hidden flex flex-col gap-6">
-                <!-- Old Pronunciation Coach (Intact) -->
                 <div class="bg-white dark:bg-slate-800 p-6 rounded-3xl border border-slate-100 shadow-sm flex flex-col gap-5">
                     <div class="flex items-center gap-3">
                         <div class="bg-emerald-100 text-emerald-700 p-2.5 rounded-xl"><i class="fa-solid fa-microphone-lines text-lg"></i></div>
@@ -771,8 +763,8 @@
                 </div>
             </div>
 
+            <!-- TAB: FREELANCE HUB -->
             <div id="tab-content-freelance" class="tab-panel hidden flex flex-col gap-6">
-                <!-- Freelance Hub (Intact) -->
                 <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col gap-5">
                     <div class="flex items-center gap-3">
                         <div class="bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-400 p-3 rounded-xl"><i class="fa-solid fa-briefcase text-xl"></i></div>
@@ -789,8 +781,8 @@
                 </div>
             </div>
 
+            <!-- TAB: MEETING PREP -->
             <div id="tab-content-meeting" class="tab-panel hidden flex flex-col gap-6">
-                <!-- Meeting Prep (Intact) -->
                 <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-100 dark:border-slate-700 shadow-sm p-6 flex flex-col gap-5">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 dark:border-slate-700 pb-4">
                         <div class="flex items-center gap-3">
@@ -810,7 +802,7 @@
         </section>
     </main>
 
-    <!-- Modals and Alerts remain unchanged -->
+    <!-- Modals -->
     <div id="api-settings-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 max-w-lg w-full rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col">
             <div class="flex justify-between items-center px-6 py-4 border-b border-slate-100 dark:border-slate-700 bg-emerald-50/30">
@@ -825,7 +817,8 @@
                 </div>
                 <div class="flex flex-col gap-2">
                     <label class="text-[10px] font-bold text-slate-500">MODEL:</label>
-                    <select id="api-model-select" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm font-medium outline-none"></select>
+                    <select id="api-model-select" onchange="handleModelChange()" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm font-medium outline-none"></select>
+                    <input type="text" id="api-model-custom" placeholder="Type custom model name here..." class="hidden w-full px-3 py-2 mt-1 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-sm font-medium outline-none">
                 </div>
                 <div class="flex flex-col gap-2">
                     <label class="text-[10px] font-bold text-slate-500">API KEY:</label>
@@ -849,7 +842,6 @@
         </div>
     </div>
 
-    <!-- Modals ... -->
     <div id="vocab-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
         <div class="bg-white dark:bg-slate-900 max-w-lg w-full rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700 flex flex-col max-h-[85vh]">
             <div class="flex justify-between items-center px-6 py-4 border-b border-slate-100 dark:border-slate-700">
@@ -895,7 +887,7 @@
     </div>
 
     <script>
-        // --- GLOBAL STATES & GAMIFICATION (Updated for Daily Learning) ---
+        // --- GLOBAL STATES & GAMIFICATION ---
         let appState = JSON.parse(localStorage.getItem('bb_state')) || {
             streak: 0, lastVisit: '', level: 'intermediate', masteredPatterns: [],
             xp: 0, badges: [], weeklyProgress: [0,0,0,0,0,0,0], dailyDate: '', dailyContent: null
@@ -922,11 +914,26 @@
 
         // MULTI-API CONFIGURATION (13 Providers)
         const apiProviders = {
-            gemini: { name: "Google Gemini", type: "gemini", endpoint: "https://generativelanguage.googleapis.com/v1beta/models/", models: ["gemini-3.1-flash-preview", "gemini-2.5-flash", "Gemini2.5flashpreview0520", "gemini-3.1-flash-lite-preview"] },
-            anthropic: { name: "Claude (Anthropic)", type: "anthropic", endpoint: "https://api.anthropic.com/v1/messages", models: ["claude-3-5-sonnet-20241022", "claude-3-opus-20240229"] },
-            mistral: { name: "Mistral AI", type: "openai", endpoint: "https://api.mistral.ai/v1/chat/completions", models: ["Pixtrallarge2411", "mistral-large-latest"] },
-            groq: { name: "Groq (Fast)", type: "openai", endpoint: "https://api.groq.com/openai/v1/chat/completions", models: ["llama-3.1-70b-versatile", "metallama/llama4scout17b16einstruct", "metallama/llama4maverick17b128einstruct", "llama3.290bvisionpreview", "Llavav1.57b4096preview"] },
-            openrouter: { name: "OpenRouter", type: "openai", endpoint: "https://openrouter.ai/api/v1/chat/completions", models: ["google/gemini-2.5-flash", "google/gemini2.5flashpreview0520", "google/gemini2.0flash001", "anthropic/claude-3.5-sonnet", "qwen/qwen2.5vl72binstruct", "metallama/llama4scout", "mistralai/pixtrallarge2411"] },
+            gemini: { 
+                name: "Google Gemini", type: "gemini", endpoint: "https://generativelanguage.googleapis.com/v1beta/models/", 
+                models: ["gemini-3.1-flash-preview", "gemini-2.5-flash", "Gemini2.5flashpreview0520", "gemini-3.1-flash-lite-preview"] 
+            },
+            anthropic: { 
+                name: "Claude (Anthropic)", type: "anthropic", endpoint: "https://api.anthropic.com/v1/messages", 
+                models: ["claude-3-5-sonnet-20241022", "claude-3-opus-20240229", "claude35sonnet20241022"] 
+            },
+            mistral: { 
+                name: "Mistral AI", type: "openai", endpoint: "https://api.mistral.ai/v1/chat/completions", 
+                models: ["mistral-large-latest", "Pixtrallarge2411"] 
+            },
+            groq: { 
+                name: "Groq (Fast)", type: "openai", endpoint: "https://api.groq.com/openai/v1/chat/completions", 
+                models: ["llama-3.1-70b-versatile", "metallama/llama4scout17b16einstruct", "metallama/llama4maverick17b128einstruct", "llama3.290bvisionpreview", "llama3.211bvisionpreview", "Llavav1.57b4096preview"] 
+            },
+            openrouter: { 
+                name: "OpenRouter", type: "openai", endpoint: "https://openrouter.ai/api/v1/chat/completions", 
+                models: ["google/gemini-2.5-flash", "google/gemini2.5flash", "google/gemini2.5flashpreview0520", "google/gemini2.0flash001", "google/geminiflash1.5", "anthropic/claude-3.5-sonnet", "anthropic/claude35sonnet", "anthropic/claude3haiku", "qwen/qwen2.5vl72binstruct", "qwen/qwen2.5vl32binstruct", "qwen/qwen2.5vl7binstruct:free", "metallama/llama4scout", "metallama/llama4maverick", "metallama/llama3.290bvisioninstruct", "metallama/llama3.211bvisioninstruct:free", "mistralai/pixtrallarge2411", "mistralai/pixtral12b"] 
+            },
             deepseek: { name: "DeepSeek", type: "openai", endpoint: "https://api.deepseek.com/chat/completions", models: ["deepseek-chat", "deepseek-reasoner"] },
             huggingface: { name: "Hugging Face", type: "openai", endpoint: "https://api-inference.huggingface.co/v1/chat/completions", models: ["meta-llama/Llama-3-8b-chat", "Qwen/Qwen2.5-7B-Instruct"] },
             cohere: { name: "Cohere", type: "openai", endpoint: "https://api.cohere.com/v1/chat", models: ["command-r-plus"] },
@@ -939,15 +946,13 @@
         let currentApiProvider = localStorage.getItem('bb_provider') || 'gemini';
         let currentModelId = localStorage.getItem('bb_model') || 'gemini-3.1-flash-preview';
 
-        // Patterns Data
         let patterns = [
             { title: "I am + Verb(ing)", desc: "বর্তমানে কোনো কাজ করছি বোঝাতে ব্যবহৃত হয়।", examples: [{en: "I am learning English.", bn: "আমি ইংরেজি শিখছি।"}] },
-            { title: "I have to + Verb", desc: "কোনো কাজ করতে ব্যায়াম (বাধ্যবাধকতা) বোঝাতে।", examples: [{en: "I have to go.", bn: "আমাকে যেতে হবে।"}] },
+            { title: "I have to + Verb", desc: "কোনো কাজ করতে হবে (বাধ্যবাধকতা) বোঝাতে।", examples: [{en: "I have to go.", bn: "আমাকে যেতে হবে।"}] },
             { title: "It is time to + Verb", desc: "কোনো কাজ করার সঠিক সময় বোঝাতে।", examples: [{en: "It is time to pray.", bn: "এখন নামায পড়ার সময়।"}] },
             { title: "Feel like + Verb(ing)", desc: "কোনো কিছু করতে ইচ্ছে করছে বোঝাতে।", examples: [{en: "I feel like eating.", bn: "আমার খেতে ইচ্ছে করছে।"}] }
         ];
 
-        // --- INIT & CORE ---
         window.onload = function() {
             if(isDarkMode) document.documentElement.classList.add('dark');
             initApiSettings();
@@ -964,7 +969,6 @@
             }
         };
 
-        // --- UI UTILS & MISSING FUNCTIONS ---
         function updateCharCount(inputId, countId) {
             const input = document.getElementById(inputId);
             const counter = document.getElementById(countId);
@@ -999,8 +1003,6 @@
             document.getElementById('chat-messages-container').innerHTML = '';
         }
 
-        // --- NEW: DAILY LEARNING DASHBOARD LOGIC ---
-        
         function initDailyLearningTab() {
             document.getElementById('daily-level-display').innerText = appState.level;
             const today = new Date().toDateString();
@@ -1025,21 +1027,12 @@
             const today = new Date().toDateString();
             const recentMistakes = mistakeList.slice(-3).map(m => m.original).join(', ') || "None yet";
             const sysPrompt = `You are a Bengali English learning coach.
-Generate daily challenge for today: ${today}
-User level: ${appState.level}
-Previous mistakes to focus on: ${recentMistakes}
-
-Provide in strictly JSON format (no markdown):
+Generate daily challenge for today: ${today}. User level: ${appState.level}. Previous mistakes to focus on: ${recentMistakes}
+Provide in strictly JSON format:
 {
-  "word_of_day": {
-    "english": "A useful practical word",
-    "bengali": "Bengali meaning",
-    "example_en": "Example sentence",
-    "example_bn": "Bengali translation of example",
-    "usage_tip_bn": "Short tip on when to use it in daily life"
-  },
+  "word_of_day": { "english": "A useful practical word", "bengali": "Bengali meaning", "example_en": "Example sentence", "example_bn": "Bengali translation of example", "usage_tip_bn": "Short tip on when to use it in daily life" },
   "quiz_questions": [
-    { "question": "Question 1 related to mistakes/vocab?", "options": ["Op1", "Op2", "Op3", "Op4"], "correct": 0, "explanation_bn": "Bangla explanation" },
+    { "question": "Question 1?", "options": ["A", "B", "C", "D"], "correct": 0, "explanation_bn": "Bangla explanation" },
     { "question": "Question 2?", "options": ["A", "B", "C", "D"], "correct": 1, "explanation_bn": "Explanation" },
     { "question": "Question 3?", "options": ["A", "B", "C", "D"], "correct": 2, "explanation_bn": "Explanation" },
     { "question": "Question 4?", "options": ["A", "B", "C", "D"], "correct": 3, "explanation_bn": "Explanation" },
@@ -1047,8 +1040,7 @@ Provide in strictly JSON format (no markdown):
   ],
   "listening_sentences": { "easy": "Short easy sentence.", "medium": "A bit longer medium sentence.", "hard": "A complex sentence for dictation." },
   "speaking_practice": { "sentence": "A practical sentence to speak.", "tip_bn": "Pronunciation tip in Bangla" }
-}
-Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
+}`;
 
             try {
                 const res = await fetchAI("Generate Daily Lesson", sysPrompt, true);
@@ -1073,7 +1065,6 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
         }
 
         function populateDailyUI(data) {
-            // Sec 1: Challenge
             document.getElementById('dl-word-en').innerText = data.word_of_day.english;
             document.getElementById('dl-word-bn').innerText = data.word_of_day.bengali;
             document.getElementById('dl-ex-en').innerText = data.word_of_day.example_en;
@@ -1085,11 +1076,9 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             document.getElementById('btn-dl-known').innerText = "আমি জানি ✓";
             document.getElementById('btn-dl-learned').innerText = "শিখলাম 🔖 (+5 XP)";
 
-            // Sec 3: Listening
             document.getElementById('dl-listen-input').value = "";
             document.getElementById('dl-listen-feedback').classList.add('hidden');
             
-            // Sec 4: Speaking
             document.getElementById('dl-speak-target').innerText = `"${data.speaking_practice.sentence}"`;
             document.getElementById('dl-speak-result').classList.add('hidden');
         }
@@ -1106,12 +1095,11 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                 badgesContainer.innerHTML = '<span class="text-xs text-slate-500">None yet</span>';
             }
 
-            // Draw Chart
             const ctx = document.getElementById('progressChart').getContext('2d');
             if(progressChartInstance) progressChartInstance.destroy();
             
             const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-            const todayIdx = (new Date().getDay() + 6) % 7; // Make Monday 0
+            const todayIdx = (new Date().getDay() + 6) % 7; 
             
             progressChartInstance = new Chart(ctx, {
                 type: 'bar',
@@ -1125,13 +1113,9 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                     }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
+                    responsive: true, maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
-                    scales: {
-                        y: { beginAtZero: true, grid: { color: isDarkMode ? '#334155' : '#f1f5f9' } },
-                        x: { grid: { display: false } }
-                    }
+                    scales: { y: { beginAtZero: true, grid: { color: isDarkMode ? '#334155' : '#f1f5f9' } }, x: { grid: { display: false } } }
                 }
             });
         }
@@ -1157,8 +1141,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                 if(!appState.badges.includes(name)) {
                     appState.badges.push(name);
                     triggerToast(`🏆 Badge Unlocked: ${name}!`);
-                    saveState();
-                    renderDailyDashboard();
+                    saveState(); renderDailyDashboard();
                 }
             };
             if(appState.streak >= 7) award("Week Warrior");
@@ -1173,8 +1156,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                 if(!vocabList.some(v => v.word === word)) {
                     vocabList.push({word, meaning, nextReview: Date.now() + 86400000});
                     localStorage.setItem('bb_vocab', JSON.stringify(vocabList));
-                    addXP(5);
-                    document.getElementById('dash-words').innerText = vocabList.length;
+                    addXP(5); document.getElementById('dash-words').innerText = vocabList.length;
                 }
             }
             document.getElementById('btn-dl-known').disabled = true;
@@ -1183,17 +1165,14 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             document.getElementById('btn-dl-learned').innerText = "Added to Bank";
         }
 
-        // Daily Quiz Logic
         function startDailyQuiz() {
             if(!appState.dailyContent || !appState.dailyContent.quiz_questions) return triggerToast("Please generate daily lesson first.");
             activeQuizQuestions = appState.dailyContent.quiz_questions;
-            currentQuizIndex = 0;
-            currentQuizScore = 0;
+            currentQuizIndex = 0; currentQuizScore = 0;
             
             document.getElementById('dl-quiz-start').classList.add('hidden');
             document.getElementById('dl-quiz-active').classList.remove('hidden');
             document.getElementById('dl-quiz-active').classList.add('flex');
-            
             loadDailyQuizQuestion();
         }
 
@@ -1203,8 +1182,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             document.getElementById('dl-quiz-score').innerText = `Score: ${currentQuizScore}`;
             document.getElementById('dl-quiz-q').innerText = q.question;
             
-            const optionsContainer = document.getElementById('dl-quiz-options');
-            optionsContainer.innerHTML = q.options.map((opt, i) => `
+            document.getElementById('dl-quiz-options').innerHTML = q.options.map((opt, i) => `
                 <button onclick="handleDailyQuizAnswer(${i})" class="w-full text-left p-3 border border-slate-200 dark:border-slate-700 rounded-xl hover:bg-indigo-50 dark:hover:bg-indigo-900/30 text-sm font-medium transition-all text-slate-700 dark:text-slate-300">
                     ${opt}
                 </button>
@@ -1224,8 +1202,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             if(isCorrect) {
                 btns[selectedIndex].classList.replace('border-slate-200', 'border-emerald-500');
                 btns[selectedIndex].classList.add('bg-emerald-50', 'dark:bg-emerald-900/30', 'text-emerald-700');
-                currentQuizScore++;
-                addXP(10);
+                currentQuizScore++; addXP(10);
             } else {
                 btns[selectedIndex].classList.replace('border-slate-200', 'border-rose-500');
                 btns[selectedIndex].classList.add('bg-rose-50', 'dark:bg-rose-900/30', 'text-rose-700');
@@ -1234,7 +1211,6 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             }
             
             document.getElementById('dl-quiz-score').innerText = `Score: ${currentQuizScore}`;
-            
             const feedback = document.getElementById('dl-quiz-feedback');
             feedback.innerHTML = `<strong>${isCorrect ? 'Correct! ✓' : 'Incorrect ✗'}</strong><br>${q.explanation_bn}`;
             feedback.classList.remove('hidden');
@@ -1246,9 +1222,8 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
 
         function nextDailyQuiz() {
             currentQuizIndex++;
-            if(currentQuizIndex < 5) {
-                loadDailyQuizQuestion();
-            } else {
+            if(currentQuizIndex < 5) loadDailyQuizQuestion();
+            else {
                 document.getElementById('dl-quiz-active').innerHTML = `
                     <div class="text-center py-6">
                         <i class="fa-solid fa-trophy text-5xl text-amber-500 mb-4"></i>
@@ -1258,18 +1233,15 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                     </div>
                 `;
                 if(currentQuizScore === 5 && !appState.badges.includes("Perfect Score")) {
-                    appState.badges.push("Perfect Score");
-                    saveState(); renderDailyDashboard(); triggerToast("🏆 Badge Unlocked: Perfect Score!");
+                    appState.badges.push("Perfect Score"); saveState(); renderDailyDashboard(); triggerToast("🏆 Badge Unlocked: Perfect Score!");
                 }
             }
         }
 
-        // Daily Listening Practice
         function playDailyListening() {
             if(!appState.dailyContent) return triggerToast("Generate lesson first.");
             const diff = document.getElementById('dl-listen-diff').value;
-            const text = appState.dailyContent.listening_sentences[diff];
-            speakArbitraryText(text);
+            speakArbitraryText(appState.dailyContent.listening_sentences[diff]);
         }
 
         async function checkDailyListening() {
@@ -1278,10 +1250,8 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             const correct = appState.dailyContent.listening_sentences[diff];
             
             if(!user) return triggerToast("Please type what you heard!");
-            
             const fb = document.getElementById('dl-listen-feedback');
-            fb.classList.remove('hidden');
-            fb.innerHTML = "Checking...";
+            fb.classList.remove('hidden'); fb.innerHTML = "Checking...";
             
             try {
                 const res = await fetchAI(`Compare dictation. Target: "${correct}", User: "${user}". Return JSON: {"score": 90, "feedback": "Bangla feedback"}`, "Lenient on punctuation.", true);
@@ -1291,12 +1261,12 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                 if(d.score > 80) addXP(15);
             } catch(e) { fb.innerHTML = "Check failed."; }
         }
+
         function loadDailyListening() {
             document.getElementById('dl-listen-input').value = "";
             document.getElementById('dl-listen-feedback').classList.add('hidden');
         }
 
-        // Daily Speak & Score
         function toggleDailySpeakMic() {
             if(!recognition) return triggerToast("Browser not supported.");
             const icon = document.getElementById('icon-dl-speak');
@@ -1304,23 +1274,16 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             const status = document.getElementById('dl-speak-status');
 
             if(isCoachListening && activeInputId === 'daily-speak') {
-                recognition.stop();
-                isCoachListening = false;
+                recognition.stop(); isCoachListening = false;
                 icon.className = "fa-solid fa-microphone";
-                btn.classList.replace('bg-rose-500', 'bg-emerald-500');
-                btn.classList.replace('hover:bg-rose-600', 'hover:bg-emerald-600');
-                status.innerText = "Processing...";
-                return;
+                btn.classList.replace('bg-rose-500', 'bg-emerald-500'); btn.classList.replace('hover:bg-rose-600', 'hover:bg-emerald-600');
+                status.innerText = "Processing..."; return;
             }
 
-            activeInputId = 'daily-speak';
-            recognition.lang = 'en-US';
-            isCoachListening = true;
+            activeInputId = 'daily-speak'; recognition.lang = 'en-US'; isCoachListening = true;
             icon.className = "fa-solid fa-stop";
-            btn.classList.replace('bg-emerald-500', 'bg-rose-500');
-            btn.classList.replace('hover:bg-emerald-600', 'hover:bg-rose-600');
+            btn.classList.replace('bg-emerald-500', 'bg-rose-500'); btn.classList.replace('hover:bg-emerald-600', 'hover:bg-rose-600');
             status.innerText = "Listening...";
-            
             try { recognition.start(); } catch(e) { triggerToast("Mic access error."); }
         }
 
@@ -1332,7 +1295,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             document.getElementById('dl-speak-score').innerText = "...";
             document.getElementById('dl-speak-feedback').innerText = `You said: "${userText}"\nAnalyzing...`;
 
-            const sysPrompt = `Evaluate pronunciation. Target: "${targetText}". User: "${userText}". Important tip context: ${appState.dailyContent.speaking_practice.tip_bn}. Return JSON: {"score": 85, "feedback": "Detailed Bangla feedback on mistakes."}`;
+            const sysPrompt = `Evaluate pronunciation. Target: "${targetText}". User: "${userText}". Tip context: ${appState.dailyContent.speaking_practice.tip_bn}. Return JSON: {"score": 85, "feedback": "Detailed Bangla feedback"}`;
             
             try {
                 const res = await fetchAI("Evaluate", sysPrompt, true);
@@ -1340,93 +1303,14 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                 document.getElementById('dl-speak-score').innerText = `${d.score}/100`;
                 document.getElementById('dl-speak-feedback').innerHTML = `<strong>You said:</strong> "${userText}"<br><br><strong>Feedback:</strong> ${d.feedback}`;
                 if(d.score >= 80) addXP(15);
-            } catch(e) {
-                document.getElementById('dl-speak-feedback').innerText = "Evaluation failed.";
-            }
+            } catch(e) { document.getElementById('dl-speak-feedback').innerText = "Evaluation failed."; }
         }
 
-        // --- PRONUNCIATION COACH LOGIC (Intact from old) ---
-        function toggleCoachMic() {
-            if(!recognition) return triggerToast("Browser not supported.");
-            const icon = document.getElementById('coach-mic-icon');
-            const btn = document.getElementById('coach-mic-btn');
-            const liveText = document.getElementById('coach-live-speech');
-
-            if(isCoachListening && activeInputId === 'coach') {
-                recognition.stop();
-                isCoachListening = false;
-                icon.className = "fa-solid fa-microphone";
-                btn.classList.replace('bg-rose-500', 'bg-emerald-500');
-                btn.classList.replace('hover:bg-rose-600', 'hover:bg-emerald-600');
-                liveText.innerText = "Processing audio...";
-                return;
-            }
-
-            activeInputId = 'coach';
-            recognition.lang = 'en-US';
-            isCoachListening = true;
-            icon.className = "fa-solid fa-stop";
-            btn.classList.replace('bg-emerald-500', 'bg-rose-500');
-            btn.classList.replace('hover:bg-emerald-600', 'hover:bg-rose-600');
-            liveText.innerText = "Listening...";
-            
-            try { recognition.start(); } catch(e) { triggerToast("Mic access error."); }
-        }
-        
-        async function generateCoachSentence() {
-            const btn = event.currentTarget || document.querySelector('[onclick="generateCoachSentence()"]');
-            const origText = btn.innerHTML;
-            btn.innerHTML = 'Loading...';
-            try {
-                const res = await fetchAI(`Generate 1 short, practical English sentence for pronunciation practice. Level: ${appState.level}. Return JSON: {"en": "The sentence", "bn": "Bangla meaning"}`, "", true);
-                const data = JSON.parse(res);
-                document.getElementById('coach-target-sentence').innerText = data.en;
-                document.getElementById('coach-target-meaning').innerText = data.bn;
-                document.getElementById('coach-feedback-box').classList.add('hidden');
-                document.getElementById('coach-live-speech').innerText = "";
-            } catch(e) {
-                triggerToast("Failed to load sentence.");
-            } finally {
-                btn.innerHTML = origText;
-            }
-        }
-
-        async function evaluatePronunciation(userText) {
-            const targetText = document.getElementById('coach-target-sentence').innerText;
-            document.getElementById('coach-live-speech').innerText = `You said: "${userText}"`;
-            const feedbackBox = document.getElementById('coach-feedback-box');
-            feedbackBox.classList.remove('hidden');
-            document.getElementById('coach-score-badge').innerText = "...";
-            document.getElementById('coach-eval-tip').innerText = "Analyzing pronunciation...";
-
-            const sysPrompt = `Evaluate the pronunciation match. Target: "${targetText}". User said: "${userText}". Return ONLY JSON: {"score": 85, "feedback": "Short feedback in Bangla on what they mispronounced or if it was good."}`;
-            
-            try {
-                const res = await fetchAI("Evaluate", sysPrompt, true);
-                const data = JSON.parse(res);
-                document.getElementById('coach-score-badge').innerText = `${data.score}%`;
-                document.getElementById('coach-eval-tip').innerText = data.feedback;
-                
-                const badge = document.getElementById('coach-score-badge');
-                badge.className = `px-2.5 py-1 text-sm font-bold rounded-full ${data.score >= 80 ? 'bg-emerald-100 text-emerald-800' : (data.score >= 50 ? 'bg-amber-100 text-amber-800' : 'bg-rose-100 text-rose-800')}`;
-            } catch(e) {
-                document.getElementById('coach-eval-tip').innerText = "Evaluation failed.";
-                document.getElementById('coach-score-badge').innerText = "N/A";
-            }
-        }
-
-        // --- GAMIFICATION CORE LOGIC ---
         function initGamification() {
             const today = new Date().toDateString();
             if(appState.lastVisit !== today) {
-                if(appState.lastVisit === new Date(Date.now() - 86400000).toDateString()) {
-                    appState.streak++;
-                    addXP(5); // 5 XP for maintaining streak
-                } else {
-                    appState.streak = 1;
-                }
-                appState.lastVisit = today;
-                saveState();
+                if(appState.lastVisit === new Date(Date.now() - 86400000).toDateString()) { appState.streak++; addXP(5); } else { appState.streak = 1; }
+                appState.lastVisit = today; saveState();
             }
             document.getElementById('streak-counter').innerText = appState.streak;
             document.getElementById('sidebar-xp').innerText = appState.xp || 0;
@@ -1437,6 +1321,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             if(appState.streak >= 7) bH += '<span class="bg-orange-100 text-orange-700 text-[8px] px-1.5 rounded-sm font-bold">7-Day Fire 🔥</span>';
             document.getElementById('badge-container').innerHTML = bH || '<span class="bg-slate-100 text-slate-500 text-[8px] px-1.5 rounded-sm font-bold">Beginner</span>';
         }
+
         function saveState() { localStorage.setItem('bb_state', JSON.stringify(appState)); }
         function updateProficiency() { appState.level = document.getElementById('user-proficiency-level').value; saveState(); triggerToast("Level Updated!"); }
         
@@ -1446,6 +1331,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a'); a.href = url; a.download = "BhashaBridge_Backup.json"; a.click();
         }
+
         function importData(e) {
             const file = e.target.files[0]; if(!file) return;
             const r = new FileReader(); r.onload = (ev) => {
@@ -1453,29 +1339,51 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                     const d = JSON.parse(ev.target.result);
                     if(d.vocab) vocabList = d.vocab; if(d.mistakes) mistakeList = d.mistakes; if(d.state) appState = d.state;
                     localStorage.setItem('bb_vocab', JSON.stringify(vocabList)); localStorage.setItem('bb_mistakes', JSON.stringify(mistakeList)); saveState();
-                    triggerToast("Data Restored Successfully!"); updateDashboardStats(); initGamification(); initDailyLearningTab();
+                    triggerToast("Data Restored!"); updateDashboardStats(); initGamification(); initDailyLearningTab();
                 } catch(e) { triggerToast("Invalid Backup File"); }
             }; r.readAsText(file);
         }
 
-        // --- Multi-API Engine ---
         function initApiSettings() {
             const pSel = document.getElementById('api-provider-select'); pSel.innerHTML = "";
             for(const key in apiProviders) pSel.innerHTML += `<option value="${key}">${apiProviders[key].name}</option>`;
             pSel.value = currentApiProvider; handleProviderChange(false);
             document.getElementById('nav-active-model').innerText = apiProviders[currentApiProvider].name;
         }
+        
         function handleProviderChange(reset = true) {
             const p = document.getElementById('api-provider-select').value;
-            const mSel = document.getElementById('api-model-select'); mSel.innerHTML = "";
+            const mSel = document.getElementById('api-model-select');
+            const mCustom = document.getElementById('api-model-custom');
+            
+            mSel.innerHTML = "";
             apiProviders[p].models.forEach(m => mSel.innerHTML += `<option value="${m}">${m}</option>`);
-            if(reset) mSel.value = apiProviders[p].models[0];
-            else if(apiProviders[p].models.includes(currentModelId)) mSel.value = currentModelId;
+            mSel.innerHTML += `<option value="custom">✍️ Enter Custom Model...</option>`;
+            
+            if(reset) {
+                mSel.value = apiProviders[p].models[0]; mCustom.classList.add('hidden');
+            } else {
+                if(apiProviders[p].models.includes(currentModelId)) { mSel.value = currentModelId; mCustom.classList.add('hidden'); } 
+                else if(currentModelId) { mSel.value = "custom"; mCustom.value = currentModelId; mCustom.classList.remove('hidden'); }
+            }
             document.getElementById('api-key-input').value = localStorage.getItem(`bb_key_${p}`) || "";
         }
+
+        function handleModelChange() {
+            const mSel = document.getElementById('api-model-select').value;
+            const mCustom = document.getElementById('api-model-custom');
+            if(mSel === 'custom') { mCustom.classList.remove('hidden'); mCustom.focus(); } else { mCustom.classList.add('hidden'); }
+        }
+
         function saveApiSettings() {
             currentApiProvider = document.getElementById('api-provider-select').value;
-            currentModelId = document.getElementById('api-model-select').value;
+            const mSel = document.getElementById('api-model-select').value;
+            
+            if(mSel === 'custom') {
+                currentModelId = document.getElementById('api-model-custom').value.trim();
+                if(!currentModelId) return triggerToast("Please enter a custom model name!");
+            } else { currentModelId = mSel; }
+
             const key = document.getElementById('api-key-input').value.trim();
             localStorage.setItem('bb_provider', currentApiProvider); localStorage.setItem('bb_model', currentModelId);
             if(key) localStorage.setItem(`bb_key_${currentApiProvider}`, key);
@@ -1483,6 +1391,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             document.getElementById('nav-active-model').innerText = apiProviders[currentApiProvider].name;
             triggerToast("Settings Saved!");
         }
+
         function handleBulkUpload(e) {
             const file = e.target.files[0]; if(!file) return;
             const r = new FileReader(); r.onload = (ev) => {
@@ -1494,7 +1403,6 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             }; r.readAsText(file); e.target.value='';
         }
 
-        // Added 'temp' parameter to control AI creativity (0.3 for translation, 0.7 for other tools)
         async function fetchAI(query, sysPrompt = "", isJson = false, retries = 1, temp = 0.7) {
             if(isOfflineMode) return isJson ? "{}" : "(Offline Mode Active)";
             const conf = apiProviders[currentApiProvider];
@@ -1523,7 +1431,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                     if(!res.ok) throw new Error(`HTTP ${res.status}`);
                     const data = await res.json();
                     let txt = data.choices?.[0]?.message?.content || "";
-                    if(isJson) txt = txt.replace(/`{3}(?:json)?/gi, '').replace(/`{3}/g, '').trim();
+                    if(isJson) txt = txt.split('```json').join('').split('```').join('').trim();
                     return txt;
                 } catch(e) { if(retries>0) return fetchAI(query, sysPrompt, isJson, retries-1, temp); throw e; }
             } 
@@ -1543,7 +1451,7 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                     if(!res.ok) throw new Error('Gemini Err');
                     const data = await res.json();
                     let txt = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
-                    if(isJson && !payload.generationConfig.responseMimeType) txt = txt.replace(/`{3}(?:json)?/gi, '').replace(/`{3}/g, '').trim();
+                    if(isJson && !payload.generationConfig.responseMimeType) txt = txt.split('```json').join('').split('```').join('').trim();
                     return txt;
                 } catch(e) { if(retries>0) return fetchAI(query, sysPrompt, isJson, retries-1, temp); throw e; }
             }
@@ -1555,18 +1463,14 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
                     if(!res.ok) throw new Error('Anthropic err');
                     const data = await res.json();
                     let txt = data.content[0].text;
-                    if(isJson) txt = txt.replace(/`{3}(?:json)?/gi, '').replace(/`{3}/g, '').trim();
+                    if(isJson) txt = txt.split('```json').join('').split('```').join('').trim();
                     return txt;
                 } catch(e) { if(retries>0) return fetchAI(query, sysPrompt, isJson, retries-1, temp); throw e; }
             }
         }
 
-        // --- Translator & Basic Tools Logic ---
         function toggleTranslationDirection() { direction = direction === 'bn-en' ? 'en-bn' : 'bn-en'; document.getElementById('trans-direction-label').innerText = direction === 'bn-en' ? "বাংলা ➔ English" : "English ➔ বাংলা"; clearSourceInput(); }
-        function clearSourceInput() { 
-            document.getElementById('source-text').value = ""; document.getElementById('target-text').innerText = "অনুবাদ এখানে প্রদর্শিত হবে...";
-            attachedFiles = []; renderAttachments();
-        }
+        function clearSourceInput() { document.getElementById('source-text').value = ""; document.getElementById('target-text').innerText = "অনুবাদ এখানে প্রদর্শিত হবে..."; attachedFiles = []; renderAttachments(); }
 
         function handleFileUpload(e) {
             Array.from(e.target.files).forEach(f => {
@@ -1604,28 +1508,42 @@ Make content relevant to Bangladeshi daily life (office, shopping, etc).`;
             document.getElementById('translation-loader').classList.remove('hidden');
             document.getElementById('skeleton-box').classList.remove('hidden');
 
-            // Master Prompt for Perfect Translation
             const sysPrompt = direction === 'bn-en'
-                ? `You are an elite, world-class Bengali-to-English translator. User input might be in pure Bengali script OR Banglish (Bengali in English letters).
-Tone requested: ${tone}. Source Dialect: ${dialect}.
+                ? `You are an elite Bengali-to-English translator. Tone: ${tone}. Dialect: ${dialect}.
 CRITICAL RULES:
-1. Provide EXACTLY the translated English text and NOTHING else. No quotes, no intro.
-2. Use modern, natural, everyday English. DO NOT use archaic or overly dramatic idioms (e.g., avoid "mend your ways" or "straighten your act"). Keep it conversational and direct like native speakers talk.
-3. Example: Banglish "tui valo hoye ja" -> "Be a better person" or "Fix yourself" or "Be good".
-4. Never reply to the user's text as a chatbot.`
+1. Translate the user's input into modern, natural English.
+2. Return ONLY a JSON object with EXACTLY these keys:
+   "english": "The translated English text",
+   "pronunciation": "Bengali pronunciation of the English text (e.g., 'হাউ আর ইউ')",
+   "meaning": "The accurate Bengali meaning of the translation"
+3. Do not use overly complex idioms.`
                 : `You are an elite English-to-Bengali translator. Tone: ${tone}.
 CRITICAL RULES:
-1. Translate the exact meaning accurately. Output ONLY perfect Bengali text in Bengali script.
-2. No quotes, no explanations, no chatting.`;
+1. Translate the user's input into proper Bengali.
+2. Return ONLY a JSON object with EXACTLY these keys:
+   "english": "The original or grammatically corrected English text",
+   "pronunciation": "Bengali pronunciation of the English text (e.g., 'হাউ আর ইউ')",
+   "meaning": "The translated Bengali meaning"
+3. Output pure JSON without markdown.`;
 
             let promptText = text;
             if(!text && attachedFiles.length > 0) promptText = "Extract text and translate based on system instructions.";
 
             try {
-                // Passing temperature = 0.3 for strict, accurate translation without hallucination
-                const res = await fetchAI(promptText, sysPrompt, false, 1, 0.3);
-                tgt.innerText = res; tgt.classList.remove('hidden', 'italic');
-            } catch(e) { tgt.innerText = "Error translating."; tgt.classList.remove('hidden'); }
+                const res = await fetchAI(promptText, sysPrompt, true, 1, 0.3);
+                const data = JSON.parse(res);
+                tgt.innerHTML = `
+                    <div class="flex flex-col gap-2.5 not-italic">
+                        <div id="translated-en-text" class="text-xl font-bold text-slate-800 dark:text-slate-200">${data.english}</div>
+                        <div class="text-sm font-medium text-indigo-500 dark:text-indigo-400">উচ্চারণ: ${data.pronunciation}</div>
+                        <div class="text-base font-semibold text-emerald-600 dark:text-emerald-400">অর্থ: ${data.meaning}</div>
+                    </div>
+                `;
+                tgt.classList.remove('hidden', 'italic');
+            } catch(e) { 
+                tgt.innerText = "Error translating. Please try again."; 
+                tgt.classList.remove('hidden'); 
+            }
             finally { document.getElementById('translation-loader').classList.add('hidden'); document.getElementById('skeleton-box').classList.add('hidden'); }
         }
 
@@ -1690,11 +1608,9 @@ CRITICAL RULES:
             const targetForm = document.getElementById(`writer-form-${tabId}`);
             if (targetForm) targetForm.classList.remove('hidden');
             
-            // Reset output
             document.getElementById('prowriter-placeholder').classList.remove('hidden');
             document.getElementById('prowriter-result-box').classList.add('hidden');
             document.getElementById('prowriter-skeleton').classList.add('hidden');
-            
             currentWriterTab = tabId;
         }
 
@@ -1761,18 +1677,14 @@ CRITICAL RULES:
             loaderLabel.classList.remove('hidden');
 
             const sysPrompt = `You are a professional writing expert helping Bangladeshi users.
-User input (in Bengali/broken English): [Provided in message]
-Tool type: ${type}
-${specificContext}
-
+Tool type: ${type}. ${specificContext}
 Provide output STRICTLY in this JSON format without markdown wrapping:
 {
   "main_output": "The core generated text (English)",
   "secondary_output": "Additional requested output (English/Bangla depending on context)",
   "bengali_tips": "A highly useful tip or summary in fluent Bengali",
   "alternatives": ["Alternative option 1", "Alternative option 2"]
-}
-Always provide the bengali_tips. Keep English output highly professional and natural.`;
+}`;
 
             try {
                 const res = await fetchAI(query, sysPrompt, true);
@@ -1808,7 +1720,6 @@ Always provide the bengali_tips. Keep English output highly professional and nat
             }
         }
 
-        // --- OLD: Dictation, Pattern & Quiz Logic (Kept Intact for old tabs) ---
         async function generateDictation() {
             const btn = event.currentTarget; const orig = btn.innerHTML; btn.innerHTML = 'Generating...';
             try {
@@ -1888,7 +1799,6 @@ Always provide the bengali_tips. Keep English output highly professional and nat
             document.getElementById('mcq-options').appendChild(div);
         }
 
-        // --- Spaced Repetition & Tutor ---
         let reviewQueue = []; let currentReviewCard = null;
         function updateDashboardStats() {
             document.getElementById('vocab-count').innerText = vocabList.length; document.getElementById('mistake-count').innerText = mistakeList.length;
@@ -1896,10 +1806,7 @@ Always provide the bengali_tips. Keep English output highly professional and nat
             const due = vocabList.filter(v => !v.nextReview || v.nextReview <= now).length;
             const dueEl = document.getElementById('due-cards-count');
             if(dueEl) dueEl.innerText = `${due} Cards Due Today`;
-            
-            if(appState.xp !== undefined) {
-                document.getElementById('sidebar-xp').innerText = appState.xp;
-            }
+            if(appState.xp !== undefined) { document.getElementById('sidebar-xp').innerText = appState.xp; }
         }
         function startSpacedRepetitionReview() {
             const now = Date.now(); reviewQueue = vocabList.filter(v => !v.nextReview || v.nextReview <= now);
@@ -1967,7 +1874,8 @@ Always provide the bengali_tips. Keep English output highly professional and nat
                 if(!k) { const u = new SpeechSynthesisUtterance(text); u.lang='en-US'; window.speechSynthesis.speak(u); return; }
                 try {
                     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${k}`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({contents:[{parts:[{text}]}], generationConfig:{responseModalities:["AUDIO"], speechConfig:{voiceConfig:{prebuiltVoiceConfig:{voiceName:voice}}}}}) });
-                    const d = await res.json(); const b64 = d?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                    const d = await res.json(); 
+                    const b64 = d?.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
                     if(b64) {
                         const binary = atob(b64); const bytes = new Uint8Array(binary.length); for(let i=0; i<binary.length; i++) bytes[i] = binary.charCodeAt(i);
                         const b = new ArrayBuffer(44 + bytes.length * 2); const v = new DataView(b);
@@ -1975,11 +1883,15 @@ Always provide the bengali_tips. Keep English output highly professional and nat
                         ws(0,'RIFF'); v.setUint32(4,36+bytes.length*2,true); ws(8,'WAVE'); ws(12,'fmt '); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true); v.setUint32(24,24000,true); v.setUint32(28,48000,true); v.setUint16(32,2,true); v.setUint16(34,16,true); ws(36,'data'); v.setUint32(40,bytes.length*2,true);
                         for(let i=0;i<bytes.length;i++) v.setInt16(44+i*2, (bytes[i]-128)*256, true);
                         new Audio(URL.createObjectURL(new Blob([b], {type:'audio/wav'}))).play();
-                    } else { throw new Error(); }
+                    } else { throw new Error('TTS Failed'); }
                 } catch(e) { const u = new SpeechSynthesisUtterance(text); u.lang='en-US'; window.speechSynthesis.speak(u); }
             }
         }
-        function speakText(id) { speakArbitraryText(document.getElementById(id).innerText||document.getElementById(id).value); }
+        function speakText(id) { 
+            const specificEn = document.getElementById('translated-en-text');
+            const el = specificEn && id === 'target-text' ? specificEn : document.getElementById(id);
+            speakArbitraryText(el.innerText || el.value); 
+        }
 
         function initSpeech() {
             const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -2063,7 +1975,7 @@ Always provide the bengali_tips. Keep English output highly professional and nat
                         <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">${data.tips}</p>
                     </div>
                 `;
-            } catch(e) { outBox.innerHTML = '<p class="text-rose-500 text-sm font-bold p-4">Failed to generate response. Check AI connection.</p>'; }
+            } catch(e) { outBox.innerHTML = '<p class="text-rose-500 text-sm font-bold p-4">Failed to generate response.</p>'; }
         }
 
         async function prepareMeeting() {
@@ -2150,10 +2062,7 @@ Always provide the bengali_tips. Keep English output highly professional and nat
             else if(t==='meeting') trg.classList.add('bg-sky-50', 'text-sky-600', 'dark:bg-sky-900/20', 'dark:text-sky-400');
             
             currentTab = t;
-
-            if(t === 'daily') {
-                initDailyLearningTab();
-            }
+            if(t === 'daily') initDailyLearningTab();
         }
 
         function toggleDarkMode() { isDarkMode=!isDarkMode; document.documentElement.classList.toggle('dark'); localStorage.setItem('bb_theme', isDarkMode?'dark':'light'); }
